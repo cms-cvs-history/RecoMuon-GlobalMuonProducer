@@ -1,0 +1,28 @@
+module StandAloneMuon = StandAloneMuonProducer {
+	untracked string MuonCollectionLabel = "" #FIXME
+
+	PSet GLBTrajBuilderParameters = {
+		string Fitter = "" #FIXME
+		string Propagator = "" #FIXME
+		string SeedCollectionTrackLabel = "" #FIXME
+		string TkTrackLabel = "" #FIXME
+		double Chi2CutTrackMatcher = 1000. #FIXME
+		int MuonHitsOption = 1 #FIXME
+		int Direction = 1 #FIXME
+		double ptCut = 15. #FIXME
+		double Chi2ProbabilityCut = 0.5 #FIXME
+		int HitThreshold = 1 #FIXME
+		double Chi2CutDT = 2. #FIXME
+		double Chi2CutCSC = 2. #FIXME
+		double Chi2CutRPC = 2. #FIXME
+
+		PSet RefitterParameters = {
+			string InPropagatorAlongMom = "" #FIXME
+			string OutPropagatorAlongMom = "" #FIXME
+			string InPropagatorOpporiteToMom = "" #FIXME
+			string OutPropagatorOppositeToMom = "" #FIXME
+		}		
+
+        }
+
+}
