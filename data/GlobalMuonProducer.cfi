@@ -1,16 +1,9 @@
-es_module = KFFittingSmootherESProducer
-{
-   string ComponentName = "KFFittingSmoother"
-   string Fitter = "KFFitter"
-   string Smoother = "KFSmoother"
-}
-
 module GlobalMuon = GlobalMuonProducer {
 	untracked string MuonCollectionLabel = "StandAloneMuon"
 
 	PSet GLBTrajBuilderParameters = {
 		string Fitter = "KFFittingSmoother"
-		string Propagator = "SteppingHelixPropagatorAny"
+		string Propagator = "PropagatorWithMaterial"
 		string SeedCollectionTrackLabel = "GlobalMixedSeeds"
 		string TkTrackLabel = "FinalFitWMaterial"
 		double Chi2CutTrackMatcher = 1000.0

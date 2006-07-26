@@ -1,0 +1,46 @@
+#
+# Propagators
+#
+	include "TrackPropagation/SteppingHelixPropagator/data/SteppingHelixPropagatorAny.cfi"
+	include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
+	include "TrackingTools/MaterialEffects/data/OppositeMaterialPropagator.cfi"
+
+#
+# Fitter and Smoother
+#
+	include "TrackingTools/KalmanUpdators/data/KFUpdatorESProducer.cfi"
+	include "TrackingTools/KalmanUpdators/data/Chi2MeasurementEstimatorESProducer.cfi"
+	include "TrackingTools/TrackFitters/data/KFTrajectoryFitterESProducer.cfi"
+	include "TrackingTools/TrackFitters/data/KFTrajectorySmootherESProducer.cfi"
+	include "TrackingTools/TrackFitters/data/KFFittingSmootherESProducer.cfi"
+
+
+
+module GlobalMuon = GlobalMuonProducer {
+	untracked string MuonCollectionLabel = "StandAloneMuon"
+
+	PSet GLBTrajBuilderParameters = {
+		string Fitter = "KFFittingSmoother"
+		string Propagator = "PropagatorWithMaterial"
+		string SeedCollectionTrackLabel = "GlobalMixedSeeds"
+		string TkTrackLabel = "FinalFitWMaterial"
+		double Chi2CutTrackMatcher = 1000.0
+		int32 MuonHitsOption = 4
+		int32 Direction = 0 
+		double ptCut = 1.0 
+		double Chi2ProbabilityCut = 30.0
+		int32 HitThreshold = 1 
+		double Chi2CutDT = 10.0 
+		double Chi2CutCSC = 15.0 
+		double Chi2CutRPC = 1.0
+
+		PSet RefitterParameters = {
+			string InPropagatorAlongMom = "PropagatorWithMaterial"
+			string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
+			string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
+			string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
+		}		
+
+        }
+
+}
