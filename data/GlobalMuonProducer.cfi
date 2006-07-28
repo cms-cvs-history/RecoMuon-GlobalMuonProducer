@@ -2,9 +2,6 @@ module GlobalMuon = GlobalMuonProducer {
 	untracked string MuonCollectionLabel = "StandAloneMuon"
 
 	PSet GLBTrajBuilderParameters = {
-		string Fitter = "KFFittingSmoother"
-		string Propagator = "PropagatorWithMaterial"
-		string SeedCollectionTrackLabel = "GlobalMixedSeeds"
 		string TkTrackLabel = "FinalFitWMaterial"
 		double Chi2CutTrackMatcher = 1000.0
 		int MuonHitsOption = 4
@@ -23,6 +20,10 @@ module GlobalMuon = GlobalMuonProducer {
 			string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 		}		
 
+		PSet UpdatorParameters = {
+			string InPropagator = "PropagatorWithMaterial"
+			string OutPropagator = "SteppingHelixPropagatorAny"
+                }
         }
 
 }
