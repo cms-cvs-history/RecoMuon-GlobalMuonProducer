@@ -2,21 +2,22 @@ module GlobalMuon = GlobalMuonProducer {
 	untracked string MuonCollectionLabel = "StandAloneMuon"
 
 	PSet GLBTrajBuilderParameters = {
-		string TkTrackLabel = "FinalFitWMaterial"
-		double Chi2CutTrackMatcher = 1000.0
-		int MuonHitsOption = 4
-		int Direction = 0 
-		double ptCut = 1.0 
+		string TkTrackCollectionLabel = "CTFWMaterial"
+		string TTRHBuilder = "WithTrackAngle"
+		double Chi2CutTrackMatcher = 300.0
+		int32 MuonHitsOption = 4
+		int32 Direction = 0 
+		double PtCut = 1.0 
 		double Chi2ProbabilityCut = 30.0
-		int HitThreshold = 1 
-		double Chi2CutDT = 10.0 
-		double Chi2CutCSC = 15.0 
-		double Chi2CutRPC = 1.0
+		int32 HitThreshold = 1 
+		double Chi2CutDT = 10.
+		double Chi2CutCSC = 150. 
+		double Chi2CutRPC = 1.
 
 		PSet RefitterParameters = {
 			string InPropagatorAlongMom = "PropagatorWithMaterial"
 			string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
-			string InPropagatorOpporiteToMom = "PropagatorWithMaterialOpposite"
+			string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
 			string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 		}		
 
