@@ -2,10 +2,10 @@ module GlobalMuon = GlobalMuonProducer {
 	untracked string MuonCollectionLabel = "StandAloneMuon"
 
 	PSet GLBTrajBuilderParameters = {
-		string TkTrackCollectionLabel = "CTFWMaterial"
+		string TkTrackCollectionLabel = "ctfWithMaterialTracks"
 		string TTRHBuilder = "WithTrackAngle"
 		double Chi2CutTrackMatcher = 300.0
-		int32 MuonHitsOption = 4
+		int32 MuonHitsOption = 1
 		int32 Direction = 0 
 		double PtCut = 1.0 
 		double Chi2ProbabilityCut = 30.0
