@@ -2,6 +2,7 @@
   include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
   # geometry
+  include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
   include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
   include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
   include "Geometry/DTGeometry/data/dtGeometry.cfi"
@@ -26,14 +27,13 @@
   include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
   include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
-  # es_module = MuonDetLayerGeometryESProducer { }
-  # es_module = MuonRecoGeometryRecord { }
+include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
 
-  # es_module module4globalmuons = Chi2MeasurementEstimatorESProducer {
-  #   string ComponentName = "Chi2MeasurementEstimator"
-  #   double MaxChi2 = 25.
-  #   double nSigma = 3.
-  #  }
+#  es_module chi2formuons= Chi2MeasurementEstimatorESProducer {
+#    string ComponentName = "Chi2MeasurementEstimatorForMuons"
+#    double MaxChi2 = 25.
+#    double nSigma = 3.
+#  }
 
   include "RecoMuon/GlobalMuonProducer/data/GlobalMuonProducer.cfi"
 
