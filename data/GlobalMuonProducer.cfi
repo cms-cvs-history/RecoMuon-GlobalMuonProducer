@@ -3,7 +3,7 @@ module GlobalMuon = GlobalMuonProducer {
 
 	PSet GLBTrajBuilderParameters = {
 		string TkTrackCollectionLabel = "ctfWithMaterialTracks"
-		string TTRHBuilder = "WithTrackAngle"
+		string TrackRecHitBuilder = "WithTrackAngle"
 		double Chi2CutTrackMatcher = 300.0
 		int32 MuonHitsOption = 1
 		int32 Direction = 0 
@@ -25,7 +25,7 @@ module GlobalMuon = GlobalMuonProducer {
 			string InPropagator = "PropagatorWithMaterial"
 			string OutPropagator = "SteppingHelixPropagatorAny"
                 }
-		PSet MuonTTRHBParameters = {}
+		PSet MuRecHitBuildPars = {}
         }
 
 }
