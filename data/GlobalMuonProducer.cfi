@@ -25,7 +25,7 @@ module GlobalMuon = GlobalMuonProducer {
 			string InPropagator = "PropagatorWithMaterial"
 			string OutPropagator = "SteppingHelixPropagatorAny"
                 }
-		PSet MuRecHitBuildPars = {}
+		PSet MuonRecHitBuilderParameters = {}
         }
 
 }
