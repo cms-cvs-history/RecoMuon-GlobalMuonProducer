@@ -1,4 +1,5 @@
-module GlobalMuon = GlobalMuonProducer {
+module globalMuons = GlobalMuonProducer {
+
     untracked string MuonCollectionLabel = "standAloneMuons"
     using MuonServiceProxy
     
