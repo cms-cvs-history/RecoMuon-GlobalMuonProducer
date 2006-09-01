@@ -1,7 +1,16 @@
 module globalMuons = GlobalMuonProducer {
 
     untracked string MuonCollectionLabel = "standAloneMuons"
-    using MuonServiceProxy
+
+    string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
+
+    PSet ServiceParameters = {
+       untracked vstring Propagators = {
+         "SteppingHelixPropagatorAny",
+         "PropagatorWithMaterial",
+         "PropagatorWithMaterialOpposite"
+       }
+    }
     
     PSet GLBTrajBuilderParameters = {
 	string TkTrackCollectionLabel = "ctfWithMaterialTracks"
