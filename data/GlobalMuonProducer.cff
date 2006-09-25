@@ -38,4 +38,4 @@ include "RecoMuon/TrackingTools/data/MuonServiceProxy_global.cff"
 
 include "RecoMuon/GlobalMuonProducer/data/GlobalMuonProducer.cfi"
 
-sequence GlobalMuonProducer = { GlobalMuon }
+sequence GlobalMuonProducer = { globalMuons }
