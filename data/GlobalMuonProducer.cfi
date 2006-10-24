@@ -1,16 +1,18 @@
 module globalMuons = GlobalMuonProducer {
-
+    
     InputTag MuonCollectionLabel = standAloneMuons
-
-    string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
-    untracked bool PutTrajectoryIntoEvent = false
-
+    
+    PSet TrackLoaderParameters = {
+	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
+	untracked bool PutTrajectoryIntoEvent = false
+    }
+    
     PSet ServiceParameters = {
-       untracked vstring Propagators = {
-         "SteppingHelixPropagatorAny",
-         "PropagatorWithMaterial",
-         "PropagatorWithMaterialOpposite"
-       }
+	untracked vstring Propagators = {
+	    "SteppingHelixPropagatorAny",
+	    "PropagatorWithMaterial",
+	    "PropagatorWithMaterialOpposite"
+	}
     }
     
     PSet GLBTrajBuilderParameters = {
