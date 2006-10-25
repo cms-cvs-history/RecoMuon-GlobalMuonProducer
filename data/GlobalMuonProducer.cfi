@@ -1,20 +1,14 @@
 module globalMuons = GlobalMuonProducer {
-    
+
     InputTag MuonCollectionLabel = standAloneMuons
+
+    using MuonServiceProxy
     
     PSet TrackLoaderParameters = {
 	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
 	untracked bool PutTrajectoryIntoEvent = false
     }
-    
-    PSet ServiceParameters = {
-	untracked vstring Propagators = {
-	    "SteppingHelixPropagatorAny",
-	    "PropagatorWithMaterial",
-	    "PropagatorWithMaterialOpposite"
-	}
-    }
-    
+        
     PSet GLBTrajBuilderParameters = {
 	string TkTrackCollectionLabel = "ctfWithMaterialTracks"
 	string TrackRecHitBuilder = "WithTrackAngle"
