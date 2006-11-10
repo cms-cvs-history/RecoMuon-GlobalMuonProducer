@@ -14,6 +14,13 @@ include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
+include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
+replace CkfTrajectoryBuilder.ptCut                = 1.
+replace CkfTrajectoryBuilder.maxNumberOfHits      =7
+replace CkfTrajectoryBuilder.minimumNumberOfHits      =0
+replace CkfTrajectoryBuilder.alwaysUseInvalidHits = false
+#replace CkfTrajectoryBuilder.estimator = "Chi2MeasurementEstimator"
+
 include "RecoMuon/TrackingTools/data/MuonServiceProxy_global.cff"
 
 include "RecoMuon/GlobalMuonProducer/data/GlobalMuonProducer.cfi"
