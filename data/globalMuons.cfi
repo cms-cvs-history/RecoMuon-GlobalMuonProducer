@@ -22,7 +22,7 @@ module globalMuons = GlobalMuonProducer {
 	double Chi2CutDT = 10.
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
-	string ckfBuilder = "CkfTrajectoryBuilder"
+	string TkTrackBuilder = "CkfTrajectoryBuilder"
 	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
