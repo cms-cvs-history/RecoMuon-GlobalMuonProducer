@@ -1,4 +1,4 @@
 # Deprecated!
 # Please use this one instead
 
-include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
+include "RecoMuon/GlobalMuonProducer/data/globalMuons.cff"
