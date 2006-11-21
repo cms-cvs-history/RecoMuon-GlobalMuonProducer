@@ -11,6 +11,7 @@ module globalMuons = GlobalMuonProducer {
     }
         
     PSet GLBTrajBuilderParameters = {
+        bool RegionalSeedFlag = false
 	string TkTrackCollectionLabel = "ctfWithMaterialTracks"
 	string TrackRecHitBuilder = "WithTrackAngle"
 	double Chi2CutTrackMatcher = 300.0
