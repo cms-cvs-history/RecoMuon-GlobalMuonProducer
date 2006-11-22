@@ -2,6 +2,7 @@ module globalMuons = GlobalMuonProducer {
 
     InputTag MuonCollectionLabel = standAloneMuons
     InputTag TrackerCollectionLabel = ctfWithMaterialTracks
+    bool MuonTrajectoryAvailable = false
 
     using MuonServiceProxy
     
@@ -12,6 +13,7 @@ module globalMuons = GlobalMuonProducer {
         
     PSet GLBTrajBuilderParameters = {
         bool RegionalSeedFlag = false
+	bool TkTrajectoryAvailable = false
 	string TkTrackCollectionLabel = "ctfWithMaterialTracks"
 	string TrackRecHitBuilder = "WithTrackAngle"
 	double Chi2CutTrackMatcher = 300.0
