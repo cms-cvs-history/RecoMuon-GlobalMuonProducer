@@ -13,7 +13,7 @@
 //
 // Original Author:  Adam A Everett
 //         Created:  Wed Sep 27 14:54:28 EDT 2006
-// $Id: GlobalMuonValidator.cc,v 1.4 2006/10/24 20:43:10 anonymous Exp $
+// $Id: GlobalMuonValidator.cc,v 1.1 2006/10/25 14:52:22 aeverett Exp $
 //
 //
 
@@ -852,10 +852,10 @@ GlobalMuonValidator::endJob() {
 float 
 GlobalMuonValidator::calculateDistance(const math::XYZVector& vect1, const math::XYZVector& vect2) {
   float dEta = vect1.eta() - vect2.eta();
-  float dPhi = vect1.phi() - vect2.phi();
+  float dPhi = fabs(Geom::Phi<float>(vect1.phi()) - Geom::Phi<float>(vect2.phi()));
   float dPt = sqrt(vect1.perp2()) - sqrt(vect2.perp2());
-  float distance = sqrt(pow(dEta,2) + pow(dPhi,2) + pow(dPt,2) );
-  //float distance = sqrt(pow(dEta,2) + pow(dPhi,2) );
+  //float distance = sqrt(pow(dEta,2) + pow(dPhi,2) + pow(dPt,2) );
+  float distance = sqrt(pow(dEta,2) + pow(dPhi,2) );
 
   return distance;
 }
