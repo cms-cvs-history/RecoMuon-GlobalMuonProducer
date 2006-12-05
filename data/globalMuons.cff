@@ -15,11 +15,10 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
 include "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cff"
-replace CkfTrajectoryBuilder.ptCut                = 1.
-replace CkfTrajectoryBuilder.maxNumberOfHits      =7
-replace CkfTrajectoryBuilder.minimumNumberOfHits      =0
-replace CkfTrajectoryBuilder.alwaysUseInvalidHits = false
-#replace CkfTrajectoryBuilder.estimator = "Chi2MeasurementEstimator"
+es_module muonCkfTrajectoryBuilder = CkfTrajectoryBuilder from "RecoTracker/CkfPattern/data/CkfTrajectoryBuilderESProducer.cfi"
+replace muonCkfTrajectoryBuilder.ComponentName = "muonCkfTrajectoryBuilder"
+replace muonCkfTrajectoryBuilder.maxNumberOfHits      =7
+replace muonCkfTrajectoryBuilder.minimumNumberOfHits      =0
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy_global.cff"
 
