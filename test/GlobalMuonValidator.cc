@@ -13,7 +13,7 @@
 //
 // Original Author:  Adam A Everett
 //         Created:  Wed Sep 27 14:54:28 EDT 2006
-// $Id: GlobalMuonValidator.cc,v 1.1 2006/10/25 14:52:22 aeverett Exp $
+// $Id: GlobalMuonValidator.cc,v 1.2 2006/11/27 16:51:07 aeverett Exp $
 //
 //
 
@@ -153,6 +153,8 @@ private:
   TH1F* hi_glbsim_etares;
   TH1F* hi_stasim_etares;
   TH1F* hi_glbsta_etares;
+
+  TH1F* hi_fails;
 };
 
 //
@@ -231,10 +233,24 @@ GlobalMuonValidator::analyze(const edm::Event& iEvent, const edm::EventSetup& iS
   iEvent.getByLabel(MuonTags_,MuCollection);
   const reco::MuonCollection muonC = *(MuCollection.product());
 
+  int nGoodSTA = 0;
+  TrackCollection::const_iterator staTrack1;
+  for(staTrack1 = staTC.begin(); staTrack1 != staTC.end(); ++staTrack1){
+    if ( ! ((*staTrack1).pt() < thePtCut || (*staTrack1).innerMomentum().Rho() < thePtCut || (*staTrack1).innerMomentum().R() < 2.5 ) ) 
+      nGoodSTA++;
+  }
+
+  bool goodSTA = (nGoodSTA > 0) ? true : false ;
+
+  hi_fails->Fill(1);
   if(muonC.size() == 0) {
+    hi_fails->Fill(2);
     cout << "*****No GLBMuon in run " << iEvent.id() << " event " << iEvent.id().event() << endl;
     cout << "     GLBMuons " << muonC.size() << " STAMuons " << staTC.size() << " TkTracks  " << tkTC.size() <<endl;
-    if(staTC.size() > 0 && tkTC.size() > 0){
+    if(staTC.size() > 0 && goodSTA) hi_fails->Fill(3);
+    if(tkTC.size() > 0) hi_fails->Fill(4);
+    if(staTC.size() > 0 && tkTC.size() > 0 && goodSTA){
+      hi_fails->Fill(5);
       cout << "          IGUANA this event! Run: " << iEvent.id() << " Event: " << iEvent.id().event() << endl;
     }
   }
@@ -537,11 +553,15 @@ GlobalMuonValidator::beginJob(const edm::EventSetup&)
   hi_glbsim_etares  = new TH1F("hi_glbsim_etares","#eta resolution GLB,sim",theNBins,-1.,1.);
   hi_stasim_etares  = new TH1F("hi_stasim_etares","#eta resolution STA.sim",theNBins,-1.,1.);
   hi_glbsta_etares  = new TH1F("hi_glbsta_etares","#eta resolution GLB,STA",theNBins,-0.1,0.1);
+
+  hi_fails = new TH1F("hi_fails","Fails",10,0.5,10.5);
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
 void 
 GlobalMuonValidator::endJob() {
+
+  hFile->cd();
 
   hi_glbsim_eff_pt = divideErr(hi_glbsim_pt,hi_sim_pt,hi_glbsim_eff_pt);
   hi_stasim_eff_pt = divideErr(hi_stasim_pt,hi_sim_pt,hi_stasim_eff_pt);
