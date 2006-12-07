@@ -1,20 +1,20 @@
 module globalMuons = GlobalMuonProducer {
-
+    
     InputTag MuonCollectionLabel = standAloneMuons
     InputTag TrackerCollectionLabel = ctfWithMaterialTracks
     bool MuonTrajectoryAvailable = false
-
+    
     using MuonServiceProxy
     
     PSet TrackLoaderParameters = {
 	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
 	untracked bool PutTrajectoryIntoEvent = false
     }
-        
+    
     PSet GLBTrajBuilderParameters = {
         bool RegionalSeedFlag = false
 	bool TkTrajectoryAvailable = false
-	string TkTrackCollectionLabel = "ctfWithMaterialTracks"
+	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
 	string TrackRecHitBuilder = "WithTrackAngle"
 	double Chi2CutTrackMatcher = 300.0
 	int32 MuonHitsOption = 1
@@ -25,7 +25,6 @@ module globalMuons = GlobalMuonProducer {
 	double Chi2CutDT = 10.
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
-	string TkTrackBuilder = "muonCkfTrajectoryBuilder"
 	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
@@ -38,30 +37,5 @@ module globalMuons = GlobalMuonProducer {
 	    string InPropagator = "PropagatorWithMaterial"
 	    string OutPropagator = "SteppingHelixPropagatorAny"
 	}
-
-	PSet SeedGeneratorParameters = {
-            string Prop = "null"
-	    double ErrorRescaleFactor = 1.0
-	    int32 SeedOption = 2           
-            int32 Direction = 0 
-            int32 MaxSeeds = 10
-
-            string HitProducer = "siPixelRecHits"
-            double ptMin=1.0
-            double originRadius=0.2
-            double originHalfLength=0.2
-            double deltaEtaRegion = 0.1
-            double deltaPhiRegion = 0.1
-            string TTRHBuilder        =  "WithTrackAngle"
-            InputTag JetSrc = icone5Tau1
-            string vertexSrc ="pixelVertices"
-
-            PSet UpdatorParameters = {
-	         string InPropagator = "PropagatorWithMaterial"
-	         string OutPropagator = "SteppingHelixPropagatorAny"
-	    }
-		
-        }
-     }
-
+    }    
 }
