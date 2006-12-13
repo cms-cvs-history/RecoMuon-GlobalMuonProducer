@@ -13,10 +13,11 @@
 //
 // Original Author:  Adam A Everett
 //         Created:  Wed Sep 27 14:54:28 EDT 2006
-// $Id: GlobalMuonValidator.cc,v 1.2 2006/11/27 16:51:07 aeverett Exp $
+// $Id: GlobalMuonValidator.cc,v 1.3 2006/12/06 15:51:52 aeverett Exp $
 //
 //
 
+#include "RecoMuon/GlobalMuonProducer/test/GlobalMuonValidator.h"
 
 // system include files
 #include <memory>
@@ -32,14 +33,7 @@
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 #include "FWCore/ParameterSet/interface/InputTag.h"
-#include "SimDataFormats/Track/interface/SimTrack.h"
-#include "SimDataFormats/Track/interface/SimTrackContainer.h"
-#include "DataFormats/TrackReco/interface/Track.h"
-#include "DataFormats/TrackReco/interface/TrackFwd.h"
-#include "DataFormats/TrackReco/interface/TrackExtraFwd.h"
-#include "TrackingTools/TransientTrack/interface/TransientTrack.h"
-#include "DataFormats/MuonReco/interface/Muon.h"
-#include "DataFormats/MuonReco/interface/MuonFwd.h"
+
 
 #include "RecoMuon/TrackingTools/interface/MuonServiceProxy.h"
 
@@ -53,117 +47,6 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <TFrame.h>
-
-//
-// class decleration
-//
-
-using namespace std;
-using namespace edm;
-using namespace reco;
-
-class GlobalMuonValidator : public edm::EDAnalyzer {
-public:
-  explicit GlobalMuonValidator(const edm::ParameterSet&);
-  ~GlobalMuonValidator();
-  
-  typedef std::pair< TrackRef, SimTrackRef> CandStaSim;
-  typedef std::pair< MuonRef,  SimTrackRef> CandMuonSim;
-  
-private:
-  virtual void beginJob(const edm::EventSetup&) ;
-  virtual void analyze(const edm::Event&, const edm::EventSetup&);
-  virtual void endJob() ;
-
-  virtual float calculateDistance(const math::XYZVector&, const math::XYZVector&);
-  virtual TH1F* divideErr(TH1F*, TH1F*, TH1F*);
-
-  // ----------member data ---------------------------
-
-  edm::InputTag TKtrackTags_; 
-  edm::InputTag STAtrackTags_; 
-  edm::InputTag MuonTags_; 
-  edm::InputTag SIMtrackTags_; 
-
-  string out, open;
-  double  theMinEta, theMaxEta, theMinPt, thePtCut;
-  int theNBins, thePartID;
-
-  Handle<reco::MuonCollection> MuCollection;
-  Handle<reco::TrackCollection> TKTrackCollection;
-  Handle<reco::TrackCollection> STATrackCollection;
-  Handle<edm::SimTrackContainer> SIMTrackCollection;
-  
-  MuonServiceProxy* theService;
-
-  //ROOT Pointers
-  TFile* hFile;
-  TStyle* effStyle;
-
-  TH1F* hi_dist_glb_sta;
-  TH1F* hi_dist_glb_sim;
-  TH1F* hi_dist_sta_sim;
-
-  TH1F* hi_sim_pt  ;
-  TH1F* hi_sta_pt  ;
-  TH1F* hi_sta2_pt  ;
-  TH1F* hi_glb_pt  ;
-
-  TH1F* hi_sim_eta  ;
-  TH1F* hi_sta_eta  ;
-  TH1F* hi_sta2_eta  ;
-  TH1F* hi_glb_eta  ;
-
-  TH1F* hi_glbsim_pt  ;
-  TH1F* hi_stasim_pt  ;
-  TH1F* hi_glbsta_pt  ;
-
-  TH1F* hi_glbsim_eta  ;
-  TH1F* hi_stasim_eta  ;
-  TH1F* hi_glbsta_eta  ;
-
-  TH1F* hi_glbsim2_pt  ;
-  TH1F* hi_stasim2_pt  ;
-  TH1F* hi_glbsta2_pt  ;
-
-  TH1F* hi_glbsim2_eta  ;
-  TH1F* hi_stasim2_eta  ;
-  TH1F* hi_glbsta2_eta  ;
-
-  TH1F* hi_glbsim_eff_pt  ;
-  TH1F* hi_stasim_eff_pt  ;
-  TH1F* hi_glbsta_eff_pt  ;
-
-  TH1F* hi_glbsim_eff_eta  ;
-  TH1F* hi_stasim_eff_eta  ;
-  TH1F* hi_glbsta_eff_eta  ;
-
-  TH1F* hi_glbsim_pur_pt  ;
-  TH1F* hi_stasim_pur_pt  ;
-  TH1F* hi_glbsta_pur_pt  ;
-
-  TH1F* hi_glbsim_pur_eta  ;
-  TH1F* hi_stasim_pur_eta  ;
-  TH1F* hi_glbsta_pur_eta  ;
-
-  TH1F* hi_glbsim_ptres;
-  TH1F* hi_stasim_ptres;
-  TH1F* hi_glbsta_ptres;
-
-  TH1F* hi_glbsim_etares;
-  TH1F* hi_stasim_etares;
-  TH1F* hi_glbsta_etares;
-
-  TH1F* hi_fails;
-};
-
-//
-// constants, enums and typedefs
-//
-
-//
-// static data member definitions
-//
 
 //
 // constructors and destructor
@@ -901,4 +784,4 @@ TH1F* GlobalMuonValidator::divideErr(TH1F* h1, TH1F* h2, TH1F* hout) {
 }
 
 //define this as a plug-in
-DEFINE_FWK_MODULE(GlobalMuonValidator);
+//DEFINE_FWK_MODULE(GlobalMuonValidator);

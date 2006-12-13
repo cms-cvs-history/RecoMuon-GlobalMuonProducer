@@ -12,6 +12,7 @@ module globalMuons = GlobalMuonProducer {
     }
     
     PSet GLBTrajBuilderParameters = {
+	untracked bool performMuonIntegrityMonitor = false
         bool RegionalSeedFlag = false
 	bool TkTrajectoryAvailable = false
 	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks

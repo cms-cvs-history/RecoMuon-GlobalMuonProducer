@@ -2,9 +2,9 @@
 <use name=FWCore/Framework>
 <use name=FWCore/Utilities>
 <use name=FWCore/ParameterSet>
+<use name=FWCore/ServiceRegistry>
 <use name=RecoMuon/TrackingTools>
 <use name=TrackingTools/TransientTrack>
-
 <use name=Foundation/PluginManager>
 <use name=DataFormats/TrackReco>
 <use name=DataFormats/MuonReco>
@@ -14,6 +14,7 @@
 <use name=CLHEP>
 <use name=root>
 
-<library file="GlobalMuonValidator.cc" name=GlobalMuonValidator>
-  <flags SEAL_PLUGIN_NAME="GlobalMuonValidator"> 
+<library file="SealModule.cc,GlobalMuonValidator.cc,Monitor/GlobalMuonModuleMonitor.cc" name=RecoMuonGlobalMuonProducerTest>
+  <use name=FWCore/Framework>
+  <flags SEAL_PLUGIN_NAME="RecoMuonGlobalMuonProducerTest"> 
 </library> 
