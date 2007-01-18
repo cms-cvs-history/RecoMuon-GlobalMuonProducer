@@ -14,7 +14,7 @@ include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
-include "RecoMuon/TrackingTools/data/MuonServiceProxy_global.cff"
+include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 
 include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
 
