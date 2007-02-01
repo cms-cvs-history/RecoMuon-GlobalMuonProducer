@@ -1,4 +1,30 @@
-# Deprecated!
-# Please use this one instead
+module GlobalMuon = GlobalMuonProducer {
+	untracked string MuonCollectionLabel = "StandAloneMuon"
 
-include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
+	PSet GLBTrajBuilderParameters = {
+		string TkTrackCollectionLabel = "ctfWithMaterialTracks"
+		string TTRHBuilder = "WithTrackAngle"
+		double Chi2CutTrackMatcher = 300.0
+		int32 MuonHitsOption = 1
+		int32 Direction = 0 
+		double PtCut = 1.0 
+		double Chi2ProbabilityCut = 30.0
+		int32 HitThreshold = 1 
+		double Chi2CutDT = 10.
+		double Chi2CutCSC = 150. 
+		double Chi2CutRPC = 1.
+
+		PSet RefitterParameters = {
+			string InPropagatorAlongMom = "PropagatorWithMaterial"
+			string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
+			string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
+			string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
+		}		
+
+		PSet UpdatorParameters = {
+			string InPropagator = "PropagatorWithMaterial"
+			string OutPropagator = "SteppingHelixPropagatorAny"
+                }
+        }
+
+}
