@@ -7,7 +7,8 @@ module globalMuons = GlobalMuonProducer {
     using MuonServiceProxy
     
     PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorAny"
+	string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
+	bool VertexConstraint = false
 	untracked bool PutTrajectoryIntoEvent = false
     }
     
@@ -33,10 +34,5 @@ module globalMuons = GlobalMuonProducer {
 	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}		
-	
-	PSet UpdatorParameters = {
-	    string InPropagator = "PropagatorWithMaterial"
-	    string OutPropagator = "SteppingHelixPropagatorAny"
-	}
     }    
 }
