@@ -19,6 +19,7 @@ module globalMuons = GlobalMuonProducer {
 	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
 	string TrackRecHitBuilder = "WithTrackAngle"
 	double Chi2CutTrackMatcher = 300.0
+	untracked bool MatchAtSurface =true
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
 	double PtCut = 1.0 
@@ -27,6 +28,15 @@ module globalMuons = GlobalMuonProducer {
 	double Chi2CutDT = 10.
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
+
+    PSet TrackTransformer = {
+	string Fitter = "KFFitterForRefitInsideOut"
+	string Smoother = "KFSmootherForRefitInsideOut"
+	string TrackerRecHitBuilder = "WithTrackAngle"
+	string MuonRecHitBuilder = "MuonRecHitBuilder"
+	
+	string RefitDirection = "insideOut"
+    }
 	
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
