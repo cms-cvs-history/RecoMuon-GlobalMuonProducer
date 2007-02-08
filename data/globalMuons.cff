@@ -15,6 +15,7 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
 
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
-
+include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
+
 
