@@ -9,7 +9,7 @@ module globalMuons = GlobalMuonProducer {
     PSet TrackLoaderParameters = {
 	string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
 	bool VertexConstraint = false
-	untracked bool PutTrajectoryIntoEvent = false
+	untracked bool PutTrajectoryIntoEvent = true
     }
     
     PSet GLBTrajBuilderParameters = {
