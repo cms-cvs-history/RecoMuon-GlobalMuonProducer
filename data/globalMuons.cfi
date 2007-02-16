@@ -1,48 +1,53 @@
 module globalMuons = GlobalMuonProducer {
     
-    InputTag MuonCollectionLabel = standAloneMuons
-    InputTag TrackerCollectionLabel = ctfWithMaterialTracks
-    bool MuonTrajectoryAvailable = false
-    
-    using MuonServiceProxy
-    
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
-	bool VertexConstraint = false
-	untracked bool PutTrajectoryIntoEvent = true
+  InputTag MuonCollectionLabel = standAloneMuons:UpdatedAtVtx
+  InputTag TrackerCollectionLabel = ctfWithMaterialTracks
+  bool MuonTrajectoryAvailable = true
+ 
+  using MuonServiceProxy
+
+  PSet TrackLoaderParameters = {
+    string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
+    bool VertexConstraint = false
+    untracked bool PutTrajectoryIntoEvent = true
+  }
+ 
+  PSet GLBTrajBuilderParameters = {
+    untracked bool performMuonIntegrityMonitor = false
+    bool RegionalSeedFlag = false
+    bool TkTrajectoryAvailable = true
+    InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
+    string TrackRecHitBuilder = "WithTrackAngle"
+    int32 MuonHitsOption = 1
+    int32 Direction = 0
+    double PtCut = 1.0
+    double Chi2ProbabilityCut = 30.0
+    int32 HitThreshold = 1
+    double Chi2CutDT = 10.
+    double Chi2CutCSC = 150.
+    double Chi2CutRPC = 1.
+
+    PSet MuonTrackMatcher = {
+      untracked bool performMuonIntegrityMonitor = false
+      untracked bool MatchAtSurface = true
+      double Chi2Cut = 300.0
+      double MinP = 2.5
+      double MinPt = 1.0
     }
-    
-    PSet GLBTrajBuilderParameters = {
-	untracked bool performMuonIntegrityMonitor = false
-        bool RegionalSeedFlag = false
-	bool TkTrajectoryAvailable = false
-	InputTag TkTrackCollectionLabel = ctfWithMaterialTracks
-	string TrackRecHitBuilder = "WithTrackAngle"
-	double Chi2CutTrackMatcher = 300.0
-	untracked bool MatchAtSurface =true
-	int32 MuonHitsOption = 1
-	int32 Direction = 0 
-	double PtCut = 1.0 
-	double Chi2ProbabilityCut = 30.0
-	int32 HitThreshold = 1 
-	double Chi2CutDT = 10.
-	double Chi2CutCSC = 150. 
-	double Chi2CutRPC = 1.
 
     PSet TrackTransformer = {
-	string Fitter = "KFFitterForRefitInsideOut"
-	string Smoother = "KFSmootherForRefitInsideOut"
-	string TrackerRecHitBuilder = "WithTrackAngle"
-	string MuonRecHitBuilder = "MuonRecHitBuilder"
-	
-	string RefitDirection = "insideOut"
+      string Fitter = "KFFitterForRefitInsideOut"
+      string Smoother = "KFSmootherForRefitInsideOut"
+      string TrackerRecHitBuilder = "WithTrackAngle"
+      string MuonRecHitBuilder = "MuonRecHitBuilder"
+      string RefitDirection = "insideOut"
     }
 	
-	PSet RefitterParameters = {
-	    string InPropagatorAlongMom = "PropagatorWithMaterial"
-	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
-	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
-	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
-	}		
-    }    
+    PSet RefitterParameters = {
+      string InPropagatorAlongMom = "PropagatorWithMaterial"
+      string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
+      string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
+      string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
+    }
+  }
 }
