@@ -34,7 +34,7 @@ module globalMuons = GlobalMuonProducer {
 	    double MinP = 2.5
 	    double MinPt = 1.0
             double DeltaEtaCut = 0.2
-            double DeltaPhuCut = 0.2
+            double DeltaPhiCut = 0.2
 	}
 
 	PSet TrackTransformer = {
