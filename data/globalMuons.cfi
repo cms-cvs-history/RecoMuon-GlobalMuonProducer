@@ -26,6 +26,7 @@ module globalMuons = GlobalMuonProducer {
 	double Chi2CutCSC = 150. 
 	double Chi2CutRPC = 1.
 	string StateOnTrackerBoundOutPropagator = "SteppingHelixPropagatorAlong"
+	string TrackerPropagator = "SteppingHelixPropagatorAny"
 	
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
@@ -44,7 +45,7 @@ module globalMuons = GlobalMuonProducer {
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "insideOut"
 	}
-	
+
 	PSet RefitterParameters = {
 	    string InPropagatorAlongMom = "PropagatorWithMaterial"
 	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
