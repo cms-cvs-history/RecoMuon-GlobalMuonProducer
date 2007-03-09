@@ -14,7 +14,7 @@
 <use name=CLHEP>
 <use name=root>
 
-<library file="SealModule.cc,GlobalMuonValidator.cc,Monitor/GlobalMuonModuleMonitor.cc" name=RecoMuonGlobalMuonProducerTest>
+<library file="SealModule.cc,GLBMuonAnalyzer.cc,Monitor/GlobalMuonModuleMonitor.cc" name=RecoMuonGlobalMuonProducerTest>
   <use name=FWCore/Framework>
   <flags SEAL_PLUGIN_NAME="RecoMuonGlobalMuonProducerTest"> 
 </library> 

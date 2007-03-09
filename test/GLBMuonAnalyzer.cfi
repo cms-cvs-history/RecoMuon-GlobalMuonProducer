@@ -1,0 +1,5 @@
+ module GLBMuonAnalyzer = GLBMuonAnalyzer {
+	untracked string DataType = "SimData" //"RealData"
+	untracked InputTag GlobalTrackCollectionLabel = globalMuons
+	untracked string rootFileName = "GLBMuonAnalyzer.root"
+ }

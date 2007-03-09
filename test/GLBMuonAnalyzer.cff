@@ -1,0 +1,11 @@
+include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+
+include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
+include "Geometry/CommonDetUnit/data/bareGlobalTrackingGeometry.cfi"
+include "Geometry/DTGeometry/data/dtGeometry.cfi"
+include "Geometry/CSCGeometry/data/cscGeometry.cfi"
+include "Geometry/RPCGeometry/data/rpcGeometry.cfi"
+include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
+
+include "RecoMuon/GlobalMuonProducer/test/GLBMuonAnalyzer.cfi"
+
