@@ -1,8 +1,8 @@
 /*
  * \file GlobalMuonModuleMonitor.cc
  * 
- * $Date:  $
- * $Revision:  $
+ * $Date: 2006/12/13 20:22:40 $
+ * $Revision: 1.1 $
  * \author A. Everett - Purdue University
  *
  */
@@ -15,7 +15,7 @@
 
 #include "DQMServices/Daemon/interface/MonitorDaemon.h"
 #include "FWCore/ServiceRegistry/interface/Service.h"
-#include "DataFormats/Common/interface/ModuleDescription.h"
+#include "DataFormats/Provenance/interface/ModuleDescription.h"
 
 #include <fstream>
 #include <map>
