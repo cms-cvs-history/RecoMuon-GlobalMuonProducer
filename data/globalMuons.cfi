@@ -5,17 +5,13 @@ module globalMuons = GlobalMuonProducer {
     bool MuonTrajectoryAvailable = true
     
     using MuonServiceProxy
-    
-    PSet TrackLoaderParameters = {
-	string TrackLoaderPropagator = "SteppingHelixPropagatorOpposite"
-	bool VertexConstraint = false
-	untracked bool PutTrajectoryIntoEvent = true
-    }
+
+    using MuonTrackLoaderForGLB
     
     PSet GLBTrajBuilderParameters = {
 	untracked bool performMuonIntegrityMonitor = false
 	bool RegionalSeedFlag = false
-	bool TkTrajectoryAvailable = true
+	bool TkTrajectoryAvailable = false
 	string TrackRecHitBuilder = "WithTrackAngle"
 	int32 MuonHitsOption = 1
 	int32 Direction = 0 
