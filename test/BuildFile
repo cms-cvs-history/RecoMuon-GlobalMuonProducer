@@ -16,5 +16,5 @@
 
 <library file="SealModule.cc,GLBMuonAnalyzer.cc,Monitor/GlobalMuonModuleMonitor.cc" name=RecoMuonGlobalMuonProducerTest>
   <use name=FWCore/Framework>
-  <flags SEAL_PLUGIN_NAME="RecoMuonGlobalMuonProducerTest"> 
+  <flags EDM_PLUGIN=1> 
 </library> 
