@@ -5,8 +5,8 @@
  *
  * Class for Muon inter-module studies.
  *  
- *  $Date: $
- *  $Revision: $
+ *  $Date: 2006/12/13 20:22:40 $
+ *  $Revision: 1.1 $
  *
  * \author A. Everett  - Purdue University
  *
@@ -30,7 +30,6 @@ class TH2;
 class TFile;
 class ModuleDescription;
 
-using namespace std;
 
   class GlobalMuonModuleMonitor : public GlobalMuonMonitorInterface {
     
@@ -43,23 +42,23 @@ using namespace std;
     void postEndJob();
     void preModule(const edm::ModuleDescription& desc);
     
-    void book1D(string name, string title, int nchX, 
+    void book1D(std::string name, std::string title, int nchX, 
 		double lowX, double highX);
-    void book1D(string level, string name, string title, 
+    void book1D(std::string level, std::string name, std::string title, 
 		int nchX, double lowX, double highX);
-    void book2D(string name, string title, int nchX, 
+    void book2D(std::string name, std::string title, int nchX, 
 		double lowX, double highX, int nchY,
 		double lowY, double highY);
-    void book2D(string level, string name, string title,
+    void book2D(std::string level, std::string name, std::string title,
 		int nchX, double lowX, double highX, int nchY, 
 		double lowY, double highY);
     
-    void save(string);
+    void save(std::string);
     
-    void fill1(string, double a, double b=1.);
-    void fill1(string, string, double a, double b=1.);
-    void fill2(string, double a, double b, double c=1.);
-    void fill2(string, string, double a, double b, double c=1.);
+    void fill1(std::string, double a, double b=1.);
+    void fill1(std::string, std::string, double a, double b=1.);
+    void fill2(std::string, double a, double b, double c=1.);
+    void fill2(std::string, std::string, double a, double b, double c=1.);
     
   private:
     
@@ -70,11 +69,11 @@ using namespace std;
     
     // Monitor Elements
     // <moduleLabel, <histoName, histoPointer> >    
-    map<string, map<string, TH1*> > m1Histos;
-    map<string, map<string, TH2*> > m2Histos;
+    std::map<std::string, std::map<std::string, TH1*> > m1Histos;
+    std::map<std::string, std::map<std::string, TH2*> > m2Histos;
     
-    string outputFileName;
-    string curModule;
+    std::string outputFileName;
+    std::string curModule;
     
   };
   
