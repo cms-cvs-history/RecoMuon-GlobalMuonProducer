@@ -5,8 +5,8 @@
  *   information,<BR>
  *   starting from a standalone reonstructed muon.
  *
- *   $Date: 2006/11/06 18:42:21 $
- *   $Revision: 1.19 $
+ *   $Date: 2007/03/20 13:38:12 $
+ *   $Revision: 1.28 $
  *
  *   \author  R.Bellan - INFN TO
  */
@@ -16,7 +16,7 @@
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/Framework/interface/EventSetup.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
-#include "FWCore/Framework/interface/Handle.h"
+#include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 
 #include "RecoMuon/GlobalMuonProducer/src/GlobalMuonProducer.h"
@@ -40,10 +40,12 @@ using namespace std;
 //
 GlobalMuonProducer::GlobalMuonProducer(const ParameterSet& parameterSet) {
 
-  LogDebug("Muon|RecoMuon|GlobalMuonProducer") << "constructor called" << endl;
+  LogTrace("Muon|RecoMuon|GlobalMuonProducer") << "constructor called" << endl;
 
   // Parameter set for the Builder
   ParameterSet trajectoryBuilderParameters = parameterSet.getParameter<ParameterSet>("GLBTrajBuilderParameters");
+  InputTag trackCollectionTag = parameterSet.getParameter<InputTag>("TrackerCollectionLabel");
+  trajectoryBuilderParameters.addParameter<InputTag>("TrackerCollectionLabel",trackCollectionTag);
 
   // STA Muon Collection Label
   theSTACollectionLabel = parameterSet.getParameter<InputTag>("MuonCollectionLabel");
@@ -61,16 +63,17 @@ GlobalMuonProducer::GlobalMuonProducer(const ParameterSet& parameterSet) {
   theService = new MuonServiceProxy(serviceParameters);
   
   // instantiate the concrete trajectory builder in the Track Finder
+  MuonTrackLoader* mtl = new MuonTrackLoader(trackLoaderParameters,theService);
   GlobalMuonTrajectoryBuilder* gmtb = new GlobalMuonTrajectoryBuilder(trajectoryBuilderParameters, theService);
-  theTrackFinder = new MuonTrackFinder(gmtb, new MuonTrackLoader(trackLoaderParameters, theService) );
-  
-  produces<reco::TrackCollection>();
-  produces<TrackingRecHitCollection>();
-  produces<reco::TrackExtraCollection>();
-  produces<vector<Trajectory> >() ;
 
-  produces<reco::MuonCollection>();
+  theTrackFinder = new MuonTrackFinder(gmtb, mtl);
 
+  setAlias(parameterSet.getParameter<std::string>("@module_label"));
+  produces<reco::TrackCollection>().setBranchAlias(theAlias + "Tracks");
+  produces<TrackingRecHitCollection>().setBranchAlias(theAlias + "RecHits");
+  produces<reco::TrackExtraCollection>().setBranchAlias(theAlias + "TrackExtras");
+  produces<vector<Trajectory> >().setBranchAlias(theAlias + "Trajectories") ;
+  produces<reco::MuonCollection>().setBranchAlias(theAlias + "s");
 }
 
 
@@ -79,7 +82,7 @@ GlobalMuonProducer::GlobalMuonProducer(const ParameterSet& parameterSet) {
 //
 GlobalMuonProducer::~GlobalMuonProducer() {
 
-  LogDebug("Muon|RecoMuon|GlobalMuonProducer") << "destructor called" << endl;
+  LogTrace("Muon|RecoMuon|GlobalMuonProducer") << "destructor called" << endl;
   if (theService) delete theService;
   if (theTrackFinder) delete theTrackFinder;
 
@@ -91,8 +94,8 @@ GlobalMuonProducer::~GlobalMuonProducer() {
 //
 void GlobalMuonProducer::produce(Event& event, const EventSetup& eventSetup) {
   const string metname = "Muon|RecoMuon|GlobalMuonProducer";  
-  LogDebug(metname)<<endl<<endl<<endl;
-  LogDebug(metname)<<"Global Muon Reconstruction started"<<endl;  
+  LogTrace(metname)<<endl<<endl<<endl;
+  LogTrace(metname)<<"Global Muon Reconstruction started"<<endl;  
 
   typedef vector<Trajectory> TrajColl;
 
@@ -100,23 +103,24 @@ void GlobalMuonProducer::produce(Event& event, const EventSetup& eventSetup) {
   theService->update(eventSetup);
 
   // Take the STA muon container(s)
-  LogDebug(metname)<<"Taking the Stand Alone Muons "<<theSTACollectionLabel.label()<<endl;
+
 
   Handle<reco::TrackCollection> staMuons;
   event.getByLabel(theSTACollectionLabel,staMuons);
 
+  LogTrace(metname) << "Taking " << staMuons->size() << " Stand Alone Muons "<<theSTACollectionLabel<<endl;
+
   Handle<vector<Trajectory> > staMuonsTraj;
 
   if(theSTATrajectoryFlag) {
-    event.getByLabel(theSTACollectionLabel,staMuonsTraj);      
-    LogDebug(metname)<<"Track Reconstruction (tracks, trajs) "<< staMuons.product()->size() << " " << staMuonsTraj.product()->size() <<endl;
+    event.getByLabel(theSTACollectionLabel.label(),staMuonsTraj);      
+    LogTrace(metname)<<"Track Reconstruction (tracks, trajs) "<< staMuons.product()->size() << " " << staMuonsTraj.product()->size() <<endl;
   } 
-  
 
   theTrackFinder->reconstruct(staMuons, staMuonsTraj, event);      
 
   
-  LogDebug(metname)<<"Event loaded"
+  LogTrace(metname)<<"Event loaded"
                    <<"================================"
                    <<endl<<endl;
     
