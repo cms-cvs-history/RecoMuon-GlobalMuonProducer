@@ -47,6 +47,9 @@ module globalMuons = GlobalMuonProducer {
 	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
 	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
 	}
+	
+	PSet RegionBuilderParameters = {}
+
     }
 
 }
