@@ -2,7 +2,7 @@
 include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
 # geometry
-include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
+include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff"
 
 include "Geometry/CommonDetUnit/data/globalTrackingGeometry.cfi"
 
