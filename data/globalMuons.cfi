@@ -42,10 +42,8 @@ module globalMuons = GlobalMuonProducer {
 	}
 
 	PSet RefitterParameters = {
-	    string InPropagatorAlongMom = "PropagatorWithMaterial"
-	    string OutPropagatorAlongMom = "SteppingHelixPropagatorAny"
-	    string InPropagatorOppositeToMom = "PropagatorWithMaterialOpposite"
-	    string OutPropagatorOppositeToMom = "SteppingHelixPropagatorAny"
+	    string AlongMomentumPropagator = "SmartPropagatorAny"
+	    string OppositeToMomentumPropagator = "SmartPropagatorAnyOpposite"
 	}
 	
 	PSet RegionBuilderParameters = {}
