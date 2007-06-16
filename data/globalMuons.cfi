@@ -23,7 +23,8 @@ module globalMuons = GlobalMuonProducer {
 	double Chi2CutRPC = 1.
 	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
 	string TrackerPropagator = "SteppingHelixPropagatorAny"
-	
+	string KFFitter = "GlbMuKFFitter"
+
 	PSet GlobalMuonTrackMatcher = {
 	    untracked bool performMuonIntegrityMonitor = false
 	    double Chi2Cut = 300.0

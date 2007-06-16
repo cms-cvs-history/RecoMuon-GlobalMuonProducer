@@ -20,6 +20,31 @@ include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
+es_module Chi2EstimatorForMuRefit = Chi2MeasurementEstimatorESProducer
+{
+  string ComponentName = "Chi2EstimatorForMuRefit"
+  double MaxChi2 = 100000.
+  double nSigma = 3.
+}
+
+es_module GlbMuKFFitter = KFTrajectoryFitterESProducer
+{
+    string ComponentName = "GlbMuKFFitter"
+    
+    string Propagator = "SmartPropagatorAny"
+    string Updator = "KFUpdator"
+    string Estimator = "Chi2EstimatorForMuRefit"
+}
+
+es_module GlbMuKFSmoother = KFTrajectorySmootherESProducer
+{
+    string ComponentName = "GlbMuKFSmoother"
+    
+    string Propagator = "SmartPropagatorOpposite"
+    string Updator = "KFUpdator"
+    string Estimator = "Chi2EstimatorForMuRefit"
+}
+
 include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
 
 
