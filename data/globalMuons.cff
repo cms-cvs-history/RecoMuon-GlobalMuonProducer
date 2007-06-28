@@ -36,15 +36,6 @@ es_module GlbMuKFFitter = KFTrajectoryFitterESProducer
     string Estimator = "Chi2EstimatorForMuRefit"
 }
 
-es_module GlbMuKFSmoother = KFTrajectorySmootherESProducer
-{
-    string ComponentName = "GlbMuKFSmoother"
-    
-    string Propagator = "SmartPropagatorOpposite"
-    string Updator = "KFUpdator"
-    string Estimator = "Chi2EstimatorForMuRefit"
-}
-
 include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
 
 
