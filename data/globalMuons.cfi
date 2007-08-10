@@ -41,6 +41,7 @@ module globalMuons = GlobalMuonProducer {
 	    string TrackerRecHitBuilder = "WithTrackAngle"
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "insideOut"
+	    bool RefitRPCHits = true
 	}
 
 	PSet RefitterParameters = {
