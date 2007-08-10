@@ -37,6 +37,7 @@ module globalMuons = GlobalMuonProducer {
 	PSet TrackTransformer = {
 	    string Fitter = "KFFitterForRefitInsideOut"
 	    string Smoother = "KFSmootherForRefitInsideOut"
+	    string Propagator = "SmartPropagatorAny"
 	    string TrackerRecHitBuilder = "WithTrackAngle"
 	    string MuonRecHitBuilder = "MuonRecHitBuilder"
 	    string RefitDirection = "insideOut"
