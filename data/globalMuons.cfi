@@ -9,48 +9,7 @@ module globalMuons = GlobalMuonProducer {
     using MuonTrackLoaderForGLB
     
     PSet GLBTrajBuilderParameters = {
-	untracked bool performMuonIntegrityMonitor = false
-	bool RegionalSeedFlag = false
-	bool TkTrajectoryAvailable = true
-	string TrackRecHitBuilder = "WithTrackAngle"
-	int32 MuonHitsOption = 1
-	int32 Direction = 0 
-	double PtCut = 1.0 
-	double Chi2ProbabilityCut = 30.0
-	int32 HitThreshold = 1 
-	double Chi2CutDT = 10.
-	double Chi2CutCSC = 150. 
-	double Chi2CutRPC = 1.
-	string StateOnTrackerBoundOutPropagator = "SmartPropagator"
-	string TrackerPropagator = "SteppingHelixPropagatorAny"
-	string KFFitter = "GlbMuKFFitter"
-
-	PSet GlobalMuonTrackMatcher = {
-	    untracked bool performMuonIntegrityMonitor = false
-	    double Chi2Cut = 300.0
-	    double MinP = 2.5
-	    double MinPt = 1.0
-            double DeltaEtaCut = 0.2
-            double DeltaPhiCut = 0.2
-	}
-
-	PSet TrackTransformer = {
-	    string Fitter = "KFFitterForRefitInsideOut"
-	    string Smoother = "KFSmootherForRefitInsideOut"
-	    string Propagator = "SmartPropagatorAny"
-	    string TrackerRecHitBuilder = "WithTrackAngle"
-	    string MuonRecHitBuilder = "MuonRecHitBuilder"
-	    string RefitDirection = "insideOut"
-	    bool RefitRPCHits = true
-	}
-
-	PSet RefitterParameters = {
-	    string AlongMomentumPropagator = "SmartPropagatorAny"
-	    string OppositeToMomentumPropagator = "SmartPropagatorAnyOpposite"
-	}
-	
-	PSet RegionBuilderParameters = {}
-
+        using GlobalTrajectoryBuilderCommon
     }
 
 }

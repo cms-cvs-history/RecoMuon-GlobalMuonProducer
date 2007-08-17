@@ -20,6 +20,8 @@ include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
 include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
 include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
 
+include "RecoMuon/GlobalTrackingTools/data/GlobalTrajectoryBuilderCommon.cff"
+
 es_module Chi2EstimatorForMuRefit = Chi2MeasurementEstimatorESProducer
 {
   string ComponentName = "Chi2EstimatorForMuRefit"
