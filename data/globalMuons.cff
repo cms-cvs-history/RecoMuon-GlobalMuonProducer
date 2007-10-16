@@ -36,6 +36,8 @@ es_module GlbMuKFFitter = KFTrajectoryFitterESProducer
     string Propagator = "SmartPropagatorAny"
     string Updator = "KFUpdator"
     string Estimator = "Chi2EstimatorForMuRefit"
+    int32 minHits = 3
+    
 }
 
 include "RecoMuon/GlobalMuonProducer/data/globalMuons.cfi"
