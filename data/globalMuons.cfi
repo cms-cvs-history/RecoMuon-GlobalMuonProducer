@@ -1,3 +1,7 @@
+include "RecoMuon/TrackingTools/data/MuonServiceProxy.cff"
+include "RecoMuon/TrackingTools/data/MuonTrackLoader.cff"
+include "RecoMuon/GlobalTrackingTools/data/GlobalTrajectoryBuilderCommon.cff"
+
 module globalMuons = GlobalMuonProducer {
     
     InputTag MuonCollectionLabel = standAloneMuons:UpdatedAtVtx
