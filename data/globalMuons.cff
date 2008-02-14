@@ -28,7 +28,7 @@ es_module GlbMuKFFitter = KFTrajectoryFitterESProducer
 {
     string ComponentName = "GlbMuKFFitter"
     
-    string Propagator = "SmartPropagatorAny"
+    string Propagator = "SmartPropagatorAnyRK"
     string Updator = "KFUpdator"
     string Estimator = "Chi2EstimatorForMuRefit"
     int32 minHits = 3
