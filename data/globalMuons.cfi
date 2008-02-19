@@ -5,7 +5,7 @@ include "RecoMuon/GlobalTrackingTools/data/GlobalTrajectoryBuilderCommon.cff"
 module globalMuons = GlobalMuonProducer {
     
     InputTag MuonCollectionLabel = standAloneMuons:UpdatedAtVtx
-    InputTag TrackerCollectionLabel = ctfWithMaterialTracks
+    InputTag TrackerCollectionLabel = generalTracks
     
     using MuonServiceProxy
 
