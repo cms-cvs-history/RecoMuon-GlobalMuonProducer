@@ -14,7 +14,4 @@
 <use name=CLHEP>
 <use name=root>
 
-<library file="SealModule.cc,GLBMuonAnalyzer.cc,Monitor/GlobalMuonModuleMonitor.cc" name=RecoMuonGlobalMuonProducerTest>
-  <use name=FWCore/Framework>
-  <flags EDM_PLUGIN=1> 
-</library> 
+<flags EDM_PLUGIN=1> 
