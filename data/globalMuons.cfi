@@ -14,7 +14,8 @@ module globalMuons = GlobalMuonProducer {
     PSet GLBTrajBuilderParameters = {
         using GlobalTrajectoryBuilderCommon
 	string KFFitter = "GlbMuKFFitter"
-	string OutPropagator = "SmartPropagatorRK"
+	string TransformerOutPropagator = "SmartPropagatorAnyRK"
+	string MatcherOutPropagator = "SmartPropagatorRK"
     }
 
 }
