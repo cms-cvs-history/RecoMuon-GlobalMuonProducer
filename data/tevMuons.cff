@@ -1,0 +1,20 @@
+# magnetic field
+include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+
+# geometry
+include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cff"
+
+include "Geometry/CommonDetUnit/data/globalTrackingGeometry.cfi"
+
+include "RecoMuon/DetLayers/data/muonDetLayerGeometry.cfi"
+include "RecoTracker/GeometryESProducer/data/TrackerRecoGeometryESProducer.cfi"
+
+include "RecoLocalTracker/SiStripRecHitConverter/data/SiStripRecHitMatcher.cfi"
+include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi"
+include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
+include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
+
+include "TrackingTools/TrackRefitter/data/TracksToTrajectories.cff"
+
+include "RecoMuon/GlobalMuonProducer/data/tevMuons.cfi"
