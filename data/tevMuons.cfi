@@ -12,8 +12,8 @@ module tevMuons = TevMuonProducer {
 
     using MuonTrackLoaderForGLB
     
-    vstring Cocktails = {"default","firstHit","picky"}
-    vint32 CocktailIndex = {1,2,3}    
+    vstring Refits = {"default","firstHit","picky"}
+    vint32 RefitIndex = {1,2,3}    
 
     PSet RefitterParameters = {
         using GlobalMuonRefitter
