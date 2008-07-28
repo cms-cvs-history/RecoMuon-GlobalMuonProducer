@@ -1,4 +1,3 @@
-
 <use name=FWCore/Framework>
 <use name=FWCore/Utilities>
 <use name=FWCore/ParameterSet>
@@ -14,4 +13,6 @@
 <use name=CLHEP>
 <use name=root>
 
-<flags EDM_PLUGIN=1> 
+<library file="GLBMuonAnalyzer.cc" name=GLBMuonAnalyzer>
+  <flags EDM_PLUGIN=1> 
+</library> 
