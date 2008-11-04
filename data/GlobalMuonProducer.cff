@@ -1,4 +1,0 @@
-# Deprecated!
-# Please use this one instead
-
-include "RecoMuon/GlobalMuonProducer/data/globalMuons.cff"
